@@ -118,7 +118,6 @@ func DeleteNote(c *gin.Context) {
 		return
 	}
 
-	// Сброс последовательности после удаления
 	db.Exec("ALTER SEQUENCE notes_id_seq RESTART WITH 1")
 
 	c.JSON(http.StatusOK, gin.H{"message": "Note deleted"})
