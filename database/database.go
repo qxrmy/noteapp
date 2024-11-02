@@ -4,14 +4,14 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
-	"noteapp/config" // Импортируйте пакет config
+	"noteapp/config"
 	"noteapp/models"
 )
 
 var DB *gorm.DB
 
 func InitDatabase() {
-	cfg := config.LoadConfig() // Загружаем конфигурацию
+	cfg := config.LoadConfig()
 
 	dsn := "host=" + cfg.DBHost +
 		" user=" + cfg.DBUser +
@@ -25,7 +25,6 @@ func InitDatabase() {
 		log.Fatal("Ошибка подключения к базе данных:", err)
 	}
 
-	// Миграции
 	db.AutoMigrate(&models.Note{})
 
 	DB = db
