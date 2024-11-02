@@ -12,7 +12,6 @@ type Config struct {
 	DBPort     string
 }
 
-// LoadConfig загружает конфигурацию из переменных окружения или устанавливает значения по умолчанию
 func LoadConfig() *Config {
 	return &Config{
 		DBUser:     getEnv("DB_USER", "postgres"),
